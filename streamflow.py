@@ -147,3 +147,7 @@ for i in range(len(sites)):
     print(f"Gauge {site_name}: {hours_above:.2f} hours")
 
 plot_streamflow(x, y_1, y_2, y_3, y_4, y_5, dates_str)
+
+# READ BELOW FIRST:
+# I forgot to commit when I organized everything into functions, so here is a comment saying that I committed the code.
+# That's why the commits will be out of order. I will make sure to commit effectively in the future.
