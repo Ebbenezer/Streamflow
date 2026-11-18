@@ -128,7 +128,22 @@ def summarize(dates, flows, sites):
 #  So, I had AI help me with the added lines below to call the functions and display the plot.
 csv_file = 'June-2021-Provo-River-Streamflow-Rates.csv'
 x, y_1, y_2, y_3, y_4, y_5, dates_str, full_dates = load_streamflow(csv_file)
+
 sites = ['10163000', '10155200', '10155500', '10154200', '10155000']
 flows = [y_1, y_2, y_3, y_4, y_5]
 summarize(full_dates, flows, sites)
+
+# This is where we ask the user for a flow threshold, as asked for in the HW.
+# First, we make a simple input prompt that the user can use to give us a threshold value.
+threshold = float(input("\nEnter a flow threshold (cfs): "))
+print(f"\nHours above {threshold} cfs in June 2021:")
+
+# Next, we loop through each site and calculate the number of hours above the threshold.
+# AI suggested I use the "np.sum" function because it is a more efficient way to count the number of True values in a boolean array.
+for i in range(len(sites)):
+    site_name = sites[i]
+    site_flow = flows[i]
+    hours_above = np.sum(site_flow > threshold) * 0.25
+    print(f"Gauge {site_name}: {hours_above:.2f} hours")
+
 plot_streamflow(x, y_1, y_2, y_3, y_4, y_5, dates_str)
